@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<time.h>
+#include <stdlib.h>
+char class1[8][11] =
+	{
+		"#电子1班",//44
+		"#计网5班",//47
+		"#计网6班",//47
+		"#计网9班",//47
+		"#自动1班",//43
+		"#自动2班",//45
+		"#自动3班",//44
+		"#自动4班",//43
+	};
+int main()
+{
+	char name[360][10];
+	int i=0,j,m,n;
+	int aaa[10]; 
+    FILE* fp=fopen("C:\\Users\\嘤嘤嘤\\Desktop\\class_name.txt", "r");
+    if (fp == NULL)
+    {
+        printf("无法打开文件\n");
+        return 0;
+    }
+    while(fgets(name[i],20,fp)!=NULL)
+    {
+		i++;
+	}
+	srand(time(NULL));
+	for(i=0;i<10;i++)
+	{
+		printf("第%d位幸运观众：\n",i+1);
+		m=rand()%8;
+		printf("%s:\t",class1[m]);
+		system("pause>nul");
+			for(j=0;j<=i;j++)
+		{
+			switch(m)
+			{
+				case 0:n=rand()%44;break;
+				case 1:n=44+rand()%47;break;
+				case 2:n=44+47+rand()%47;break;
+				case 3:n=44+47+47+rand()%47;break;
+				case 4:n=44+47+47+47+rand()%43;break;
+				case 5:n=44+47+47+47+43+rand()%45;break;
+				case 6:n=44+47+47+47+43+45+rand()%44;break;
+				case 7:n=44+47+47+47+43+45+44+rand()%43;break;
+			}
+			aaa[i]=n;
+			if(aaa[j]==n&&i>0)
+			{
+				i--;
+				
+			}
+		}
+		printf("%s\n",name[n]);
+	}
+	return 0;
+}
